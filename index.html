@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html ng-app="noteApp">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Fancy Note Taking App</title>
+    <link rel="stylesheet" href="styles.css" />
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/united/bootstrap.min.css" crossorigin="anonymous">
+    <script data-require="jquery@*" data-semver="2.0.3" src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+    <script data-require="angular.js@1.0.x" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js" data-semver="1.0.8"></script>
+    <script src="app.js"></script>
+</head>
+
+<body ng-controller="mainCtrl">
+    <h1 class="text-center">Fancy Note Taking Application</h1>
+    <div class="container">
+        <section class="jumbotron">
+            <h2 class="title">Your notes</h2>
+            <br>
+            <!-- <div ng-if="notes==[]">
+                <br>
+                <h5 class="title">You have no notes right now. Click on the button to add a new Note.</h5>
+            </div> -->
+            <div class="list-group">
+                <div ng-repeat="note in notes" class="inline-notes">
+                    <a href="#" class="list-group-item ">
+                        <h4 class="list-group-item-heading">{{note}}</h4>
+                    </a>
+                    <button class="btn btn-danger list-group-item-button" ng-click="deleteNote(note)">Delete</button>
+                </div>
+            </div>
+        </section>
+        <form ng-submit="AddNote()">
+            <div class="inline">
+                <!-- <button class="btn btn-primary btn-lg add-button" ng-click="toggleAddNote()">+</button> -->
+                <div class="input-group input-group-lg text-box">
+                    <span class="input-group-addon" id="sizing-addon1">Note</span>
+                    <input type="text" class="form-control" ng-model="note" aria-describedby="sizing-addon1">
+                </div>
+                <button class="btn btn-success btn-lg save-button" ng-disabled="note==''" ng-click="AddNote()">Add Note</button>
+            </div>
+        </form>
+        <br>
+        <button class="btn btn-primary btn-lg large-save">Save notes to the database</button>
+    </div>
+    <script src="app.js"></script>
+</body>
+
+</html>
