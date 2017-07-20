@@ -8,7 +8,7 @@
     <!-- Latest compiled and minified CSS Bootstrap-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <!-- Optional Bootstrap theme theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/united/bootstrap.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/superhero/bootstrap.min.css" crossorigin="anonymous">
 
     <!-- Restangular Dependencies -->
     <!-- Or use TAG number for specific version. New versions are auto deployed -->
@@ -26,14 +26,22 @@
 </head>
 
 <body ng-controller="mainCtrl" ng-init="getAllNotes()">
-    <h1 class="text-center">Fancy To-Do App</h1>
+    <h1 class="text-center">Simple To-Do App</h1>
     <div class="container">
         <section class="jumbotron">
+            <center>
+                <div ng-show="triggerError" class="center">
+                    <div class="alert alert-danger" role="alert">
+                      <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                      <span class="sr-only">Error:</span>Dang it! Need authentication to connect to SAP servers. Bummer!
+                    </div>
+                </div>
+            </center>
             <h2 class="title">Your To-do list</h2>
             <br>
             <div ng-if="todos==[]">
                 <br>
-                <h5 class="title">You have no notes right now. Click on the "Add" button to add a new entry.</h5>
+                <h5 class="title">You have no notes right now.Type what you'd like to do and add a new entry.</h5>
             </div>
             <div class="list-group">
 
@@ -58,10 +66,7 @@
             </div>
         </form>
         <br>
-        <!-- <button class="btn btn-primary btn-lg large-save">Save notes to the database</button> -->
     </div>
-    <button ng-click="getAllNotes()" class="btn btn-primary">Update</button>
-    <!-- Or use TAG number for specific version. New versions are auto deployed -->
    
 </body>
 

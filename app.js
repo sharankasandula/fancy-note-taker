@@ -14,9 +14,8 @@ app.controller('mainCtrl', ['$scope', '$log', 'Restangular', '$http',
     $scope.note = "";
     $scope.notes = [];
     $scope.allTodos = [];
+    $scope.triggerError = false;
     
-
-    var todoId = 1
     $scope.AddNote = function() {
 
         // POST request that will post the note to the database
@@ -37,7 +36,6 @@ app.controller('mainCtrl', ['$scope', '$log', 'Restangular', '$http',
         console.log(id);
 
         var query = 'demo-app-service.xsodata/DATA(' + id + ')';
-        // var query = 'demo-app-service.xsodata/DATA';
         Restangular.one(query).remove(id);
 
         setTimeout(function() {
@@ -50,8 +48,14 @@ app.controller('mainCtrl', ['$scope', '$log', 'Restangular', '$http',
     $scope.getAllNotes = function() {
             Restangular.one('demo-app-service.xsodata/DATA').get().then(function(result){
                 $scope.allTodos = result.data.d.results;
-                // console.log(result.data.d.results)
+            }, function(response){
+                console.error("Connection to SAP servers is not possible right now. Please try again later");
+                $scope.triggerError = true;
             });
         };
 
-}])
+
+
+}]);
+
+
